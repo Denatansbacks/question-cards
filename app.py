@@ -26,7 +26,7 @@ CATEGORIES_UI: Dict[str, Dict[str, str]] = {
 
 
 @st.cache_data(show_spinner=False)
-def load_questions() -> Tuple[Dict[str, dict], Dict[str, List[str]]]:
+def load_questions(mtime: float) -> Tuple[Dict[str, dict], Dict[str, List[str]]]:
     data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     by_id: Dict[str, dict] = {q["id"]: q for q in data["questions"]}
     by_cat: Dict[str, List[str]] = {}
@@ -37,7 +37,7 @@ def load_questions() -> Tuple[Dict[str, dict], Dict[str, List[str]]]:
     return by_id, by_cat
 
 
-Q_BY_ID, IDS_BY_CAT = load_questions()
+Q_BY_ID, IDS_BY_CAT = load_questions(DATA_PATH.stat().st_mtime)
 ALL_IDS = [qid for cat in sorted(IDS_BY_CAT.keys()) for qid in IDS_BY_CAT[cat]]
 
 
@@ -148,6 +148,7 @@ def inject_css():
         secondary_text = "rgba(17,24,39,.90)"
         tab_text = "rgba(17,24,39,.92)"
         radio_bg = "rgba(17,24,39,.18)"
+        toggle_bg = "rgba(17,24,39,.12)"
     else:
         bg1 = "#0B0F14"
         bg2 = "#1C1438"
@@ -164,6 +165,7 @@ def inject_css():
         secondary_text = "rgba(255,255,255,.92)"
         tab_text = "rgba(255,255,255,.92)"
         radio_bg = "rgba(255,255,255,.10)"
+        toggle_bg = "rgba(255,255,255,.10)"
 
     st.markdown(
         f"""
@@ -198,6 +200,7 @@ def inject_css():
         div[role="radiogroup"] label {{
             background: {radio_bg} !important;
             border: 1px solid {secondary_border} !important;
+            box-shadow: 0 8px 18px rgba(0,0,0,.08);
             border-radius: 999px !important;
             padding: .35rem .7rem !important;
             margin: 0 .25rem 0 0 !important;
@@ -227,8 +230,18 @@ def inject_css():
             box-shadow: inset 0 0 0 1px {secondary_border} !important;
         }}
 
+
+        div[data-testid="stToggle"] {
+            display: inline-flex !important;
+            padding: .05rem;
+            border-radius: 999px;
+            background: {toggle_bg} !important;
+            border: 1px solid {secondary_border} !important;
+        }
+
+
         div[data-testid="stToggle"] label {{
-            background: {secondary_bg} !important;
+            background: {toggle_bg} !important;
             border: 1px solid {secondary_border} !important;
             border-radius: 999px !important;
             padding: .35rem .7rem !important;
@@ -294,8 +307,20 @@ def inject_css():
 
         .card-front {{
             position: relative;
-            padding: 1.45rem 1.35rem 1.65rem 1.35rem;
+            height: 100%;
+            padding: 1.35rem 1.25rem 1.55rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: .6rem;
             animation: dealIn .22s ease-out;
+        }}
+        /* Card aspect ratio changes with device aspect ratio */
+        .card-front {{
+            aspect-ratio: 4 / 3; /* portrait default */
+        }}
+        @media (min-aspect-ratio: 4/3) {{
+            .card-front {{ aspect-ratio: 16 / 10; }}
         }}
         @keyframes dealIn {{
             from {{ transform: translateY(14px) scale(.985); opacity: 0; }}
@@ -329,6 +354,9 @@ def inject_css():
             margin-top: .95rem;
             text-align: center;
             padding: 0 .2rem;
+            max-height: 55%;
+            overflow: auto;
+            scrollbar-width: thin;
         }}
         .meta {{
             color: {sub};
