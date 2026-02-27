@@ -141,12 +141,13 @@ def inject_css():
         outer = "rgba(255,255,255,.58)"
         inner = "rgba(248,178,154,.95)"
         shadow = "rgba(0,0,0,.18)"
-        primary = "#F0483E"          # stronger contrast for light mode
+        primary = "#F0483E"
         primary_text = "#FFFFFF"
-        secondary_bg = "rgba(255,255,255,.62)"
+        secondary_bg = "rgba(255,255,255,.88)"
         secondary_border = "rgba(17,24,39,.16)"
         secondary_text = "rgba(17,24,39,.90)"
         tab_text = "rgba(17,24,39,.92)"
+        radio_bg = "rgba(17,24,39,.12)"
     else:
         bg1 = "#0B0F14"
         bg2 = "#1C1438"
@@ -162,6 +163,7 @@ def inject_css():
         secondary_border = "rgba(255,255,255,.16)"
         secondary_text = "rgba(255,255,255,.92)"
         tab_text = "rgba(255,255,255,.92)"
+        radio_bg = "rgba(255,255,255,.10)"
 
     st.markdown(
         f"""
@@ -184,7 +186,7 @@ def inject_css():
         .block-container {{
             padding-top: 1rem;
             padding-bottom: 2.5rem;
-            max-width: 720px;
+            max-width: 820px;
         }}
 
         /* Chips */
@@ -194,7 +196,7 @@ def inject_css():
             gap: .45rem;
         }}
         div[role="radiogroup"] label {{
-            background: {secondary_bg} !important;
+            background: {radio_bg} !important;
             border: 1px solid {secondary_border} !important;
             border-radius: 999px !important;
             padding: .35rem .7rem !important;
@@ -213,7 +215,19 @@ def inject_css():
         }}
 
         /* Toggle chip (Dark/Light) — background behind switch+text */
-        div[data-testid="stToggle"] > label {{
+
+        /* Toggle switch track/thumb visibility */
+        div[data-testid="stToggle"] [data-baseweb="switch"] > div {
+            background: rgba(17,24,39,.22) !important;
+        }
+        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"][aria-checked="true"] {
+            background: {primary} !important;
+        }
+        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"] {
+            box-shadow: inset 0 0 0 1px {secondary_border} !important;
+        }
+
+        div[data-testid="stToggle"] label {{
             background: {secondary_bg} !important;
             border: 1px solid {secondary_border} !important;
             border-radius: 999px !important;
@@ -280,7 +294,7 @@ def inject_css():
 
         .card-front {{
             position: relative;
-            padding: 1.15rem 1.15rem 1.35rem 1.15rem;
+            padding: 1.45rem 1.35rem 1.65rem 1.35rem;
             animation: dealIn .22s ease-out;
         }}
         @keyframes dealIn {{
@@ -308,7 +322,7 @@ def inject_css():
             font-weight: 900;
         }}
         .qtext {{
-            font-size: 1.22rem;
+            font-size: 1.38rem;
             line-height: 1.52;
             font-weight: 900;
             color: {text};
@@ -327,8 +341,8 @@ def inject_css():
             left: 50%;
             bottom: -14px;
             transform: translateX(-50%);
-            width: 54px;
-            height: 36px;
+            width: 62px;
+            height: 40px;
             border-radius: 999px;
             display: flex;
             align-items: center;
@@ -336,7 +350,7 @@ def inject_css():
             background: {card_bg};
             border: 2px solid {inner};
             box-shadow: 0 10px 24px {shadow};
-            font-size: 18px;
+            font-size: 19px;
         }}
         </style>
         """,

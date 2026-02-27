@@ -16,3 +16,7 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+- Добавлено больше вопросов (теперь 300: по 60 в каждой категории)
+
+- Добавлено ещё вопросов (теперь 400: по 80 в каждой категории)
