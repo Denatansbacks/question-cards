@@ -518,7 +518,7 @@ with c4:
 
 # Sidebar: Mix categories (only affects "Микс")
 if st.session_state.get("show_settings", False):
-        with st.sidebar:
+    with st.sidebar:
         st.markdown("### " + t("Настройки микса", "Mix settings"))
         st.caption(t("Выберите, какие темы попадут в «Микс».", "Choose which topics are included in Mix."))
 
@@ -543,7 +543,6 @@ if st.session_state.get("show_settings", False):
                 st.rerun()
         else:
             st.info(t("Переключитесь на «Микс», чтобы выбрать категории.", "Switch to Mix to choose categories."))
-
 
 tabs = st.tabs([t("Игра", "Play"), t("История", "History")])
 
