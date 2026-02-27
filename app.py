@@ -60,6 +60,7 @@ def init_state():
     st.session_state.setdefault("mix_categories", ["friends", "couple", "party", "smart", "adult"])
     st.session_state.setdefault("_mix_categories_prev", ["friends", "couple", "party", "smart", "adult"])
     st.session_state.setdefault("dark_mode", False)
+    st.session_state.setdefault("show_settings", False)
     st.session_state.setdefault("history", [])  # asked question ids in order
     st.session_state.setdefault("decks", {})      # cat_key -> list[qid]
     st.session_state.setdefault("deck_pos", {})   # cat_key -> int
@@ -186,6 +187,12 @@ def inject_css():
         toggle_bg = "rgba(255,255,255,.10)"
         toggle_text_off = "rgba(17,24,39,.92)"
         toggle_text_on = "rgba(255,255,255,.98)"
+
+    sidebar_hidden_css = ""
+    if not st.session_state.get("show_settings", False):
+        sidebar_hidden_css = """
+        [data-testid=\"stSidebar\"] { display: none !important; }
+        """
 
     st.markdown(
         f"""
@@ -450,6 +457,12 @@ def inject_css():
             box-shadow: 0 10px 24px {shadow};
             font-size: 19px;
         }}
+        {sidebar_hidden_css}
+
+        /* Sidebar styling */
+        [data-testid="stSidebar"] {{
+            border-right: 1px solid {secondary_border} !important;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -475,7 +488,7 @@ st.markdown(
 )
 
 # Controls
-c1, c2, c3 = st.columns([2.3, 1.0, 1.0], vertical_alignment="center")
+c1, c2, c3, c4 = st.columns([2.3, 1.0, 1.0, 0.65], vertical_alignment="center")
 with c1:
     st.selectbox(
         t("Тема", "Topic"),
@@ -496,33 +509,40 @@ with c2:
 with c3:
     st.toggle(t("Тёмная", "Dark"), key="dark_mode")
 
+with c4:
+    # Sidebar is hidden because Streamlit header is hidden; provide our own toggle
+    if st.button("⚙️", help=t("Открыть/закрыть настройки (sidebar)", "Open/close settings (sidebar)"), type="secondary"):
+        st.session_state.show_settings = not st.session_state.show_settings
+        st.rerun()
+
 
 # Sidebar: Mix categories (only affects "Микс")
-with st.sidebar:
-    st.markdown("### " + t("Настройки микса", "Mix settings"))
-    st.caption(t("Выберите, какие темы попадут в «Микс».", "Choose which topics are included in Mix."))
+if st.session_state.get("show_settings", False):
+        with st.sidebar:
+        st.markdown("### " + t("Настройки микса", "Mix settings"))
+        st.caption(t("Выберите, какие темы попадут в «Микс».", "Choose which topics are included in Mix."))
 
-    mix_opts = [k for k in CATEGORIES_UI.keys() if k != "mix"]
+        mix_opts = [k for k in CATEGORIES_UI.keys() if k != "mix"]
 
-    if st.session_state.category == "mix":
-        st.multiselect(
-            t("Категории", "Categories"),
-            mix_opts,
-            format_func=ui_label,
-            key="mix_categories",
-        )
-        cur_sel = list(st.session_state.get("mix_categories", []))
-        prev_sel = list(st.session_state.get("_mix_categories_prev", []))
+        if st.session_state.category == "mix":
+            st.multiselect(
+                t("Категории", "Categories"),
+                mix_opts,
+                format_func=ui_label,
+                key="mix_categories",
+            )
+            cur_sel = list(st.session_state.get("mix_categories", []))
+            prev_sel = list(st.session_state.get("_mix_categories_prev", []))
 
-        if len(cur_sel) == 0:
-            st.warning(t("Выберите хотя бы одну категорию — иначе колода будет пустой.", "Pick at least one category, otherwise the deck is empty."))
+            if len(cur_sel) == 0:
+                st.warning(t("Выберите хотя бы одну категорию — иначе колода будет пустой.", "Pick at least one category, otherwise the deck is empty."))
 
-        if cur_sel != prev_sel:
-            st.session_state["_mix_categories_prev"] = cur_sel
-            reset_deck("mix")
-            st.rerun()
-    else:
-        st.info(t("Переключитесь на «Микс», чтобы выбрать категории.", "Switch to Mix to choose categories."))
+            if cur_sel != prev_sel:
+                st.session_state["_mix_categories_prev"] = cur_sel
+                reset_deck("mix")
+                st.rerun()
+        else:
+            st.info(t("Переключитесь на «Микс», чтобы выбрать категории.", "Switch to Mix to choose categories."))
 
 
 tabs = st.tabs([t("Игра", "Play"), t("История", "History")])
