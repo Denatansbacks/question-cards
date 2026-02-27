@@ -231,13 +231,13 @@ def inject_css():
         }}
 
 
-        div[data-testid="stToggle"] {
+        div[data-testid="stToggle"] {{
             display: inline-flex !important;
             padding: .05rem;
             border-radius: 999px;
             background: {toggle_bg} !important;
             border: 1px solid {secondary_border} !important;
-        }
+        }}
 
 
         div[data-testid="stToggle"] label {{
@@ -293,8 +293,27 @@ def inject_css():
         }}
 
         /* Card deck */
-        .deck-wrap {{ margin-top: .7rem; margin-bottom: .9rem; }}
-        .deck {{ position: relative; width: 100%; min-height: 270px; padding-bottom: 18px; }}
+        .deck-wrap {{ margin-top: .7rem; margin-bottom: .9rem; display:flex; justify-content:center; }}
+        .deck {{ position: relative; width: 100%; padding-bottom: 18px; }}
+        /* Main card area: fixed aspect ratio (depends on device aspect) */
+        .deck.deck-main {{
+            width: min(100%, 860px);
+            aspect-ratio: 4 / 3;
+        }}
+        /* Wide screens: slightly wider card */
+        @media (min-aspect-ratio: 4/3) {{
+            .deck.deck-main {{ aspect-ratio: 16 / 10; }}
+        }}
+
+        /* Mini cards in History: auto height */
+        .deck.deck-mini {{
+            aspect-ratio: auto;
+            padding-bottom: 0;
+        }}
+        .deck.deck-mini .card-front {{
+            height: auto;
+        }}
+
         .card-back, .card-front {{
             border-radius: 26px;
             background: {card_bg};
@@ -438,7 +457,7 @@ with tabs[0]:
         st.markdown(
             f"""
             <div class="deck-wrap">
-              <div class="deck">
+              <div class="deck deck-main">
                 <div class="card-front">
                   <div class="pill" style="justify-content:center;">🎉 {t("Набор закончился","Deck completed")}</div>
                   <div class="qtext">{t("Вы вытащили все карты!","You drew every card!")}</div>
@@ -468,7 +487,7 @@ with tabs[0]:
         st.markdown(
             f"""
             <div class="deck-wrap">
-              <div class="deck">
+              <div class="deck deck-main">
                 <div class="card-back back2"></div>
                 <div class="card-back back1"></div>
                 <div class="card-front" data-deal="{st.session_state.deal_nonce}">
@@ -506,7 +525,7 @@ with tabs[1]:
             st.markdown(
                 f"""
                 <div class="deck-wrap" style="margin-top:.55rem;">
-                  <div class="deck" style="min-height:unset;">
+                  <div class="deck deck-mini">
                     <div class="card-front" style="padding:1rem 1rem 1.2rem 1rem;">
                       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
                         <div class="pill">{ui_label(cat)}</div>
