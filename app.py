@@ -518,6 +518,18 @@ with tabs[0]:
         # Show only the actual category on the card (no 'mix' label inside)
         left_label = ui_label(actual_cat)
 
+        # Adaptive font size: shrink slightly for long questions
+        q_text = get_text(cur_qid)
+        n = len(q_text)
+        if n <= 70:
+            q_font = 1.45
+        elif n <= 110:
+            q_font = 1.30
+        elif n <= 160:
+            q_font = 1.18
+        else:
+            q_font = 1.08
+
         st.markdown(
             f"""
             <div class="deck-wrap">
@@ -527,10 +539,10 @@ with tabs[0]:
                 <div class="card-front" data-deal="{st.session_state.deal_nonce}">
                   <div class="card-topbar">
                     <div class="pill">{left_label}</div>
-                    <div class="card-count">{t("карта","card")} {pos}/{total}</div>
+                    <div class="card-count">{pos}/{total}</div>
                   </div>
                   <div class="card-center">
-                    <div class="qtext" style="font-size:{q_font}rem;">{get_text(cur_qid)}</div>
+                    <div class="qtext" style="font-size:{q_font}rem;">{q_text}</div>
                   </div>
                   <div class="symbol-badge">{bottom_symbol_for_category(actual_cat)}</div>
                 </div>
