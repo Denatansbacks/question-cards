@@ -125,6 +125,16 @@ def get_text(qid: str) -> str:
     return q["ru"] if st.session_state.lang == "ru" else q["en"]
 
 
+
+def format_question_html(text: str) -> str:
+    """Escape text for HTML and force a line break after the 3rd word."""
+    import html as _html
+    safe = _html.escape(text)
+    words = safe.split()
+    if len(words) <= 3:
+        return safe
+    return " ".join(words[:3]) + "<br>" + " ".join(words[3:])
+
 def get_category_of(qid: str) -> str:
     return Q_BY_ID[qid]["category"]
 
@@ -378,12 +388,14 @@ def inject_css():
         }}
         .card-center {{
             flex: 1;
+            min-height: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             gap: .6rem;
-            padding-top: 1.6rem; /* space for topbar */
+            padding-top: 2.2rem; /* reserve space under pinned topbar */
+            padding-bottom: 1.3rem; /* reserve space above bottom badge */
         }}
 
         .pill {{
@@ -406,7 +418,7 @@ def inject_css():
             margin-top: .95rem;
             text-align: center;
             padding: 0 .2rem;
-            max-height: 55%;
+            max-height: 62%;
             overflow: auto;
             scrollbar-width: thin;
         }}
@@ -520,6 +532,7 @@ with tabs[0]:
 
         # Adaptive font size: shrink slightly for long questions
         q_text = get_text(cur_qid)
+        q_html = format_question_html(q_text)
         n = len(q_text)
         if n <= 70:
             q_font = 1.45
@@ -542,7 +555,7 @@ with tabs[0]:
                     <div class="card-count">{pos}/{total}</div>
                   </div>
                   <div class="card-center">
-                    <div class="qtext" style="font-size:{q_font}rem;">{q_text}</div>
+                    <div class="qtext" style="font-size:{q_font}rem;">{q_html}</div>
                   </div>
                   <div class="symbol-badge">{bottom_symbol_for_category(actual_cat)}</div>
                 </div>
@@ -581,7 +594,7 @@ with tabs[1]:
                         <div class="pill">{ui_label(cat)}</div>
                         <div class="pill">#{len(history)-idx+1}</div>
                       </div>
-                      <div class="qtext" style="font-size:1.08rem;margin-top:.75rem;">{get_text(qid)}</div>
+                      <div class="qtext" style="font-size:1.08rem;margin-top:.75rem;">{format_question_html(get_text(qid))}</div>
                       <div class="symbol-badge">{bottom_symbol_for_category(cat)}</div>
                     </div>
                   </div>
