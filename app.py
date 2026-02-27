@@ -412,13 +412,13 @@ def inject_css():
         }}
         .qtext {{
             font-size: 1.38rem;
-            line-height: 1.52;
+            line-height: 1.35;
             font-weight: 900;
             color: {text};
             margin-top: .95rem;
             text-align: center;
             padding: 0 .2rem;
-            max-height: 70%;
+            max-height: 66%;
             overflow: hidden;
             
         }}
@@ -535,17 +535,17 @@ with tabs[0]:
         words_n = len(q_text.split())
         chars_n = len(q_text)
 
-        # Start from larger font for short questions; scale down for longer ones
-        if words_n <= 10 and chars_n <= 80:
-            q_font = 1.55
-        elif words_n <= 14 and chars_n <= 110:
-            q_font = 1.40
-        elif words_n <= 18 and chars_n <= 140:
-            q_font = 1.26
-        elif words_n <= 24 and chars_n <= 180:
-            q_font = 1.14
+        # Keep sizes conservative (mandatory line break after 3rd word adds height)
+        if words_n <= 8 and chars_n <= 70:
+            q_font = 1.30
+        elif words_n <= 12 and chars_n <= 95:
+            q_font = 1.18
+        elif words_n <= 16 and chars_n <= 125:
+            q_font = 1.06
+        elif words_n <= 22 and chars_n <= 165:
+            q_font = 0.96
         else:
-            q_font = 1.02
+            q_font = 0.86
 
         st.markdown(
             f"""
