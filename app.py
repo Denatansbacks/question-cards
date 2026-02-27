@@ -418,9 +418,9 @@ def inject_css():
             margin-top: .95rem;
             text-align: center;
             padding: 0 .2rem;
-            max-height: 62%;
-            overflow: auto;
-            scrollbar-width: thin;
+            max-height: 70%;
+            overflow: hidden;
+            
         }}
         .meta {{
             color: {sub};
@@ -529,19 +529,23 @@ with tabs[0]:
 
         # Show only the actual category on the card (no 'mix' label inside)
         left_label = ui_label(actual_cat)
-
-        # Adaptive font size: shrink slightly for long questions
+        # Adaptive font size: shrink for long questions (avoid scrolling)
         q_text = get_text(cur_qid)
         q_html = format_question_html(q_text)
-        n = len(q_text)
-        if n <= 70:
-            q_font = 1.45
-        elif n <= 110:
-            q_font = 1.30
-        elif n <= 160:
-            q_font = 1.18
+        words_n = len(q_text.split())
+        chars_n = len(q_text)
+
+        # Start from larger font for short questions; scale down for longer ones
+        if words_n <= 10 and chars_n <= 80:
+            q_font = 1.55
+        elif words_n <= 14 and chars_n <= 110:
+            q_font = 1.40
+        elif words_n <= 18 and chars_n <= 140:
+            q_font = 1.26
+        elif words_n <= 24 and chars_n <= 180:
+            q_font = 1.14
         else:
-            q_font = 1.08
+            q_font = 1.02
 
         st.markdown(
             f"""
