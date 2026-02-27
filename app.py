@@ -57,6 +57,8 @@ def bottom_symbol_for_category(cat_key: str) -> str:
 def init_state():
     st.session_state.setdefault("lang", "ru")
     st.session_state.setdefault("category", "mix")
+    st.session_state.setdefault("mix_categories", ["friends", "couple", "party", "smart", "adult"])
+    st.session_state.setdefault("_mix_categories_prev", ["friends", "couple", "party", "smart", "adult"])
     st.session_state.setdefault("dark_mode", False)
     st.session_state.setdefault("history", [])  # asked question ids in order
     st.session_state.setdefault("decks", {})      # cat_key -> list[qid]
@@ -67,7 +69,11 @@ def init_state():
 
 def ids_for_deck(cat_key: str) -> List[str]:
     if cat_key == "mix":
-        return list(ALL_IDS)
+        selected = st.session_state.get("mix_categories", [])
+        ids: List[str] = []
+        for c in selected:
+            ids.extend(IDS_BY_CAT.get(c, []))
+        return ids
     return list(IDS_BY_CAT.get(cat_key, []))
 
 
@@ -489,6 +495,35 @@ with c2:
     )
 with c3:
     st.toggle(t("Тёмная", "Dark"), key="dark_mode")
+
+
+# Sidebar: Mix categories (only affects "Микс")
+with st.sidebar:
+    st.markdown("### " + t("Настройки микса", "Mix settings"))
+    st.caption(t("Выберите, какие темы попадут в «Микс».", "Choose which topics are included in Mix."))
+
+    mix_opts = [k for k in CATEGORIES_UI.keys() if k != "mix"]
+
+    if st.session_state.category == "mix":
+        st.multiselect(
+            t("Категории", "Categories"),
+            mix_opts,
+            format_func=ui_label,
+            key="mix_categories",
+        )
+        cur_sel = list(st.session_state.get("mix_categories", []))
+        prev_sel = list(st.session_state.get("_mix_categories_prev", []))
+
+        if len(cur_sel) == 0:
+            st.warning(t("Выберите хотя бы одну категорию — иначе колода будет пустой.", "Pick at least one category, otherwise the deck is empty."))
+
+        if cur_sel != prev_sel:
+            st.session_state["_mix_categories_prev"] = cur_sel
+            reset_deck("mix")
+            st.rerun()
+    else:
+        st.info(t("Переключитесь на «Микс», чтобы выбрать категории.", "Switch to Mix to choose categories."))
+
 
 tabs = st.tabs([t("Игра", "Play"), t("История", "History")])
 
