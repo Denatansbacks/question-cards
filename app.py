@@ -569,7 +569,7 @@ with tabs[0]:
             draw_next(cat_key)
             st.rerun()
 
-        if st.button(t("Перемешать карточки", "Shuffle deck"), type="secondary"):
+        if st.button(t("Перемешать карточки", "Shuffle deck"), type="primary"):
             reset_deck(cat_key)
             st.rerun()
 
