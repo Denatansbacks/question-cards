@@ -147,7 +147,7 @@ def inject_css():
         secondary_border = "rgba(17,24,39,.16)"
         secondary_text = "rgba(17,24,39,.90)"
         tab_text = "rgba(17,24,39,.92)"
-        radio_bg = "rgba(17,24,39,.12)"
+        radio_bg = "rgba(17,24,39,.18)"
     else:
         bg1 = "#0B0F14"
         bg2 = "#1C1438"
@@ -217,15 +217,15 @@ def inject_css():
         /* Toggle chip (Dark/Light) — background behind switch+text */
 
         /* Toggle switch track/thumb visibility */
-        div[data-testid="stToggle"] [data-baseweb="switch"] > div {
+        div[data-testid="stToggle"] [data-baseweb="switch"] > div {{
             background: rgba(17,24,39,.22) !important;
-        }
-        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"][aria-checked="true"] {
+        }}
+        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"][aria-checked="true"] {{
             background: {primary} !important;
-        }
-        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"] {
+        }}
+        div[data-testid="stToggle"] [data-baseweb="switch"] div[role="switch"] {{
             box-shadow: inset 0 0 0 1px {secondary_border} !important;
-        }
+        }}
 
         div[data-testid="stToggle"] label {{
             background: {secondary_bg} !important;

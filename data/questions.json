@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.4.1",
   "generated": "2026-02-27",
   "questions": [
     {
@@ -2401,6 +2401,606 @@
       "category": "adult",
       "ru": "Что делает близость более «нашей», уникальной?",
       "en": "What makes intimacy feel more 'ours' and unique?"
+    },
+    {
+      "id": "friends_081",
+      "category": "friends",
+      "ru": "Что тебя удивило в людях в последнее время?",
+      "en": "What surprised you about people lately?"
+    },
+    {
+      "id": "friends_082",
+      "category": "friends",
+      "ru": "Какая привычка делает тебя более спокойным(ой)?",
+      "en": "What habit makes you calmer?"
+    },
+    {
+      "id": "friends_083",
+      "category": "friends",
+      "ru": "Какая вещь помогает тебе чувствовать себя уверенно?",
+      "en": "What thing helps you feel confident?"
+    },
+    {
+      "id": "friends_084",
+      "category": "friends",
+      "ru": "Какой самый тёплый комплимент ты недавно получил(а)?",
+      "en": "What's the warmest compliment you received recently?"
+    },
+    {
+      "id": "friends_085",
+      "category": "friends",
+      "ru": "Что для тебя важно в дружеских встречах: частота или качество?",
+      "en": "In friendships, what matters more: frequency or quality time?"
+    },
+    {
+      "id": "friends_086",
+      "category": "friends",
+      "ru": "Какая смешная фраза стала твоей «внутренней»?",
+      "en": "What funny phrase became your 'inner catchphrase'?"
+    },
+    {
+      "id": "friends_087",
+      "category": "friends",
+      "ru": "Если бы ты мог(ла) подарить всем друзьям одну вещь, что бы это было?",
+      "en": "If you could gift one thing to all your friends, what would it be?"
+    },
+    {
+      "id": "friends_088",
+      "category": "friends",
+      "ru": "Какой маленький риск ты хотел(а) бы попробовать на этой неделе?",
+      "en": "What small risk would you like to try this week?"
+    },
+    {
+      "id": "friends_089",
+      "category": "friends",
+      "ru": "Что тебя вдохновляет в других людях?",
+      "en": "What inspires you in other people?"
+    },
+    {
+      "id": "friends_090",
+      "category": "friends",
+      "ru": "Какой твой любимый формат общения: голосом, текстом, лично?",
+      "en": "What's your favorite way to communicate: voice, text, in-person?"
+    },
+    {
+      "id": "friends_091",
+      "category": "friends",
+      "ru": "Как ты любишь отмечать дни рождения?",
+      "en": "How do you like celebrating birthdays?"
+    },
+    {
+      "id": "friends_092",
+      "category": "friends",
+      "ru": "Какая мелочь делает твою неделю лучше?",
+      "en": "What small thing makes your week better?"
+    },
+    {
+      "id": "friends_093",
+      "category": "friends",
+      "ru": "Что ты считаешь своим лучшим решением за последний год?",
+      "en": "What's your best decision from the last year?"
+    },
+    {
+      "id": "friends_094",
+      "category": "friends",
+      "ru": "Какой навык ты бы хотел(а) освоить «для удовольствия»?",
+      "en": "What skill would you like to learn just for fun?"
+    },
+    {
+      "id": "friends_095",
+      "category": "friends",
+      "ru": "Что ты выбираешь: план или импровизация?",
+      "en": "Do you choose planning or improvisation more often?"
+    },
+    {
+      "id": "friends_096",
+      "category": "friends",
+      "ru": "Какая твоя любимая погода и почему?",
+      "en": "What's your favorite weather—and why?"
+    },
+    {
+      "id": "friends_097",
+      "category": "friends",
+      "ru": "Что ты делаешь, когда нужно перезагрузиться эмоционально?",
+      "en": "What do you do to emotionally reset?"
+    },
+    {
+      "id": "friends_098",
+      "category": "friends",
+      "ru": "Какую историю из жизни ты любишь рассказывать?",
+      "en": "What's a life story you love telling?"
+    },
+    {
+      "id": "friends_099",
+      "category": "friends",
+      "ru": "Что тебе хочется сделать вместе с друзьями в ближайший месяц?",
+      "en": "What would you like to do with friends in the next month?"
+    },
+    {
+      "id": "friends_100",
+      "category": "friends",
+      "ru": "Какое место ассоциируется у тебя с радостью?",
+      "en": "What place do you associate with joy?"
+    },
+    {
+      "id": "couple_081",
+      "category": "couple",
+      "ru": "Как ты понимаешь, что человек тебе подходит по духу?",
+      "en": "How do you know someone matches your spirit?"
+    },
+    {
+      "id": "couple_082",
+      "category": "couple",
+      "ru": "Что для тебя значит «быть на одной стороне»?",
+      "en": "What does 'being on the same team' mean to you?"
+    },
+    {
+      "id": "couple_083",
+      "category": "couple",
+      "ru": "Какой жест заботы для тебя самый убедительный?",
+      "en": "What caring gesture feels most convincing to you?"
+    },
+    {
+      "id": "couple_084",
+      "category": "couple",
+      "ru": "Что в отношениях для тебя должно быть лёгким и естественным?",
+      "en": "What should feel easy and natural in a relationship?"
+    },
+    {
+      "id": "couple_085",
+      "category": "couple",
+      "ru": "Какой вопрос ты любишь, когда тебе задают его близкие?",
+      "en": "What question do you love being asked by someone close?"
+    },
+    {
+      "id": "couple_086",
+      "category": "couple",
+      "ru": "Что ты хочешь сохранить в себе несмотря на отношения?",
+      "en": "What do you want to keep in yourself even while in a relationship?"
+    },
+    {
+      "id": "couple_087",
+      "category": "couple",
+      "ru": "Что помогает тебе чувствовать, что тебя принимают?",
+      "en": "What helps you feel accepted?"
+    },
+    {
+      "id": "couple_088",
+      "category": "couple",
+      "ru": "Какой момент рядом с любимым человеком ты ценишь больше всего?",
+      "en": "What moment next to a loved one do you value most?"
+    },
+    {
+      "id": "couple_089",
+      "category": "couple",
+      "ru": "Что ты бы хотел(а) делать вместе, чтобы было больше радости?",
+      "en": "What would you like us to do together to have more joy?"
+    },
+    {
+      "id": "couple_090",
+      "category": "couple",
+      "ru": "Какой тип юмора для тебя самый притягательный?",
+      "en": "What type of humor is most attractive to you?"
+    },
+    {
+      "id": "couple_091",
+      "category": "couple",
+      "ru": "Что для тебя значит «быть собой» рядом с партнёром?",
+      "en": "What does 'being yourself' next to a partner mean to you?"
+    },
+    {
+      "id": "couple_092",
+      "category": "couple",
+      "ru": "Какой маленький знак внимания для тебя работает лучше всего?",
+      "en": "What small sign of attention works best for you?"
+    },
+    {
+      "id": "couple_093",
+      "category": "couple",
+      "ru": "Чего тебе хочется больше: спокойствия или приключений — и почему?",
+      "en": "Do you crave more calm or more adventure—and why?"
+    },
+    {
+      "id": "couple_094",
+      "category": "couple",
+      "ru": "Какой разговор делает тебя ближе к человеку?",
+      "en": "What kind of conversation makes you feel closer?"
+    },
+    {
+      "id": "couple_095",
+      "category": "couple",
+      "ru": "Что ты считаешь самым красивым проявлением любви?",
+      "en": "What do you consider the most beautiful expression of love?"
+    },
+    {
+      "id": "couple_096",
+      "category": "couple",
+      "ru": "Как ты любишь, чтобы с тобой делились планами?",
+      "en": "How do you like plans to be shared with you?"
+    },
+    {
+      "id": "couple_097",
+      "category": "couple",
+      "ru": "Что в твоём характере раскрывается со временем?",
+      "en": "What part of your character shows over time?"
+    },
+    {
+      "id": "couple_098",
+      "category": "couple",
+      "ru": "Какая традиция пары кажется тебе классной?",
+      "en": "What's a couple tradition you think is great?"
+    },
+    {
+      "id": "couple_099",
+      "category": "couple",
+      "ru": "Как ты понимаешь, что тебе доверяют?",
+      "en": "How do you know someone trusts you?"
+    },
+    {
+      "id": "couple_100",
+      "category": "couple",
+      "ru": "Какой совместный опыт ты бы хотел(а) прожить хотя бы раз?",
+      "en": "What shared experience would you love to live at least once?"
+    },
+    {
+      "id": "party_081",
+      "category": "party",
+      "ru": "Какой самый неожиданный плейлист у тебя есть?",
+      "en": "What's the most unexpected playlist you have?"
+    },
+    {
+      "id": "party_082",
+      "category": "party",
+      "ru": "Что ты выбираешь на вечеринке: быть в центре или наблюдать?",
+      "en": "At a party, do you prefer being the center or observing?"
+    },
+    {
+      "id": "party_083",
+      "category": "party",
+      "ru": "Какой самый странный танец тебе нравится?",
+      "en": "What's a weird dance you actually enjoy?"
+    },
+    {
+      "id": "party_084",
+      "category": "party",
+      "ru": "Если бы вечеринка была животным, каким?",
+      "en": "If the party were an animal, which one would it be?"
+    },
+    {
+      "id": "party_085",
+      "category": "party",
+      "ru": "Что ты любишь делать в перерывах между активностями?",
+      "en": "What do you like doing in breaks between activities?"
+    },
+    {
+      "id": "party_086",
+      "category": "party",
+      "ru": "Какой смешной спор ты видел(а) в компании?",
+      "en": "What's a funny argument you've witnessed in a group?"
+    },
+    {
+      "id": "party_087",
+      "category": "party",
+      "ru": "Твоя идеальная громкость музыки?",
+      "en": "What's your ideal music volume?"
+    },
+    {
+      "id": "party_088",
+      "category": "party",
+      "ru": "Какой самый вкусный напиток без алкоголя ты пробовал(а)?",
+      "en": "What's the tastiest non-alcoholic drink you've tried?"
+    },
+    {
+      "id": "party_089",
+      "category": "party",
+      "ru": "Что делает атмосферу «домашней», даже в большой компании?",
+      "en": "What makes a vibe feel 'homey' even in a big group?"
+    },
+    {
+      "id": "party_090",
+      "category": "party",
+      "ru": "Если бы у нас был дресс-код, каким он был бы?",
+      "en": "If we had a dress code, what would it be?"
+    },
+    {
+      "id": "party_091",
+      "category": "party",
+      "ru": "Какое слово лучше всего описывает твою энергию на вечеринке?",
+      "en": "What word best describes your party energy?"
+    },
+    {
+      "id": "party_092",
+      "category": "party",
+      "ru": "Что ты выбираешь: настолки, танцы или разговоры у кухни?",
+      "en": "Do you choose board games, dancing, or kitchen talks?"
+    },
+    {
+      "id": "party_093",
+      "category": "party",
+      "ru": "Какая песня заставляет тебя улыбаться?",
+      "en": "What song makes you smile instantly?"
+    },
+    {
+      "id": "party_094",
+      "category": "party",
+      "ru": "Какой самый смешной костюм ты видел(а)?",
+      "en": "What's the funniest costume you've seen?"
+    },
+    {
+      "id": "party_095",
+      "category": "party",
+      "ru": "Какой мини-ритуал делает начало вечеринки лучше?",
+      "en": "What mini-ritual makes the party start better?"
+    },
+    {
+      "id": "party_096",
+      "category": "party",
+      "ru": "Что ты считаешь лучшим завершением вечера?",
+      "en": "What's the best way to end the night?"
+    },
+    {
+      "id": "party_097",
+      "category": "party",
+      "ru": "Если бы ты мог(ла) добавить один элемент на любую вечеринку, что бы это было?",
+      "en": "If you could add one element to any party, what would it be?"
+    },
+    {
+      "id": "party_098",
+      "category": "party",
+      "ru": "Какая закуска всегда уместна?",
+      "en": "What snack is always appropriate?"
+    },
+    {
+      "id": "party_099",
+      "category": "party",
+      "ru": "Что ты больше любишь: знакомиться или углублять общение?",
+      "en": "Do you enjoy meeting new people or deepening existing chats more?"
+    },
+    {
+      "id": "party_100",
+      "category": "party",
+      "ru": "Какой «мем-режим» у тебя включается на тусовке?",
+      "en": "What 'meme mode' do you enter at a party?"
+    },
+    {
+      "id": "smart_081",
+      "category": "smart",
+      "ru": "Как ты определяешь, что идея стоит времени?",
+      "en": "How do you decide an idea is worth your time?"
+    },
+    {
+      "id": "smart_082",
+      "category": "smart",
+      "ru": "Какая твоя любимая стратегия решения проблем?",
+      "en": "What's your favorite problem-solving strategy?"
+    },
+    {
+      "id": "smart_083",
+      "category": "smart",
+      "ru": "Что ты считаешь недооценённым навыком в XXI веке?",
+      "en": "What skill do you think is underrated in the 21st century?"
+    },
+    {
+      "id": "smart_084",
+      "category": "smart",
+      "ru": "Что помогает тебе учиться быстрее?",
+      "en": "What helps you learn faster?"
+    },
+    {
+      "id": "smart_085",
+      "category": "smart",
+      "ru": "Как ты понимаешь, что тебе нужно отдохнуть?",
+      "en": "How do you know you need rest?"
+    },
+    {
+      "id": "smart_086",
+      "category": "smart",
+      "ru": "Какая привычка делает тебя более внимательным(ой) к деталям?",
+      "en": "What habit makes you more detail-oriented?"
+    },
+    {
+      "id": "smart_087",
+      "category": "smart",
+      "ru": "Какой вопрос ты задаёшь, чтобы не попасть в самообман?",
+      "en": "What question do you ask to avoid self-deception?"
+    },
+    {
+      "id": "smart_088",
+      "category": "smart",
+      "ru": "Что для тебя важнее в знаниях: применимость или красота?",
+      "en": "In knowledge, what's more important: usefulness or beauty?"
+    },
+    {
+      "id": "smart_089",
+      "category": "smart",
+      "ru": "Как ты реагируешь на критику: защищаешься или любопытствуешь?",
+      "en": "How do you react to criticism: defend or get curious?"
+    },
+    {
+      "id": "smart_090",
+      "category": "smart",
+      "ru": "Что делает человека мудрым(ой)?",
+      "en": "What makes someone wise?"
+    },
+    {
+      "id": "smart_091",
+      "category": "smart",
+      "ru": "Какая идея тебя пугает, но интересует?",
+      "en": "What's an idea that scares you but interests you?"
+    },
+    {
+      "id": "smart_092",
+      "category": "smart",
+      "ru": "Какой навык ты считаешь ключевым для будущего?",
+      "en": "What skill do you think is key for the future?"
+    },
+    {
+      "id": "smart_093",
+      "category": "smart",
+      "ru": "Что тебе помогает менять привычки?",
+      "en": "What helps you change habits?"
+    },
+    {
+      "id": "smart_094",
+      "category": "smart",
+      "ru": "Как ты относишься к ограничениям — как к врагу или к рамкам?",
+      "en": "How do you see constraints: as an enemy or as a frame?"
+    },
+    {
+      "id": "smart_095",
+      "category": "smart",
+      "ru": "Какая книга/фильм заставили тебя думать иначе?",
+      "en": "What book/movie made you think differently?"
+    },
+    {
+      "id": "smart_096",
+      "category": "smart",
+      "ru": "Что для тебя значит «быть объективным(ой)»?",
+      "en": "What does 'being objective' mean to you?"
+    },
+    {
+      "id": "smart_097",
+      "category": "smart",
+      "ru": "Какой вопрос ты бы задал(а) всем людям на планете?",
+      "en": "What question would you ask every human on Earth?"
+    },
+    {
+      "id": "smart_098",
+      "category": "smart",
+      "ru": "Что помогает тебе быть последовательным(ой)?",
+      "en": "What helps you stay consistent?"
+    },
+    {
+      "id": "smart_099",
+      "category": "smart",
+      "ru": "Как ты понимаешь, что спор стал токсичным?",
+      "en": "How do you know a debate became toxic?"
+    },
+    {
+      "id": "smart_100",
+      "category": "smart",
+      "ru": "Что для тебя «хороший аргумент»?",
+      "en": "What is a 'good argument' to you?"
+    },
+    {
+      "id": "adult_081",
+      "category": "adult",
+      "ru": "Что помогает тебе чувствовать взаимность?",
+      "en": "What helps you feel mutuality?"
+    },
+    {
+      "id": "adult_082",
+      "category": "adult",
+      "ru": "Как ты любишь, чтобы вас «приглашали» к близости?",
+      "en": "How do you like to be 'invited' into intimacy?"
+    },
+    {
+      "id": "adult_083",
+      "category": "adult",
+      "ru": "Какая забота после близости для тебя самая важная?",
+      "en": "What aftercare matters most to you?"
+    },
+    {
+      "id": "adult_084",
+      "category": "adult",
+      "ru": "Какой формат разговоров о желаниях тебе проще всего?",
+      "en": "What format of desire-talk is easiest for you?"
+    },
+    {
+      "id": "adult_085",
+      "category": "adult",
+      "ru": "Что тебе помогает оставаться в контакте с собой?",
+      "en": "What helps you stay in touch with yourself?"
+    },
+    {
+      "id": "adult_086",
+      "category": "adult",
+      "ru": "Как ты предпочитаешь, чтобы партнёр проверял комфорт?",
+      "en": "How do you prefer a partner to check your comfort?"
+    },
+    {
+      "id": "adult_087",
+      "category": "adult",
+      "ru": "Какая мелочь помогает тебе расслабиться быстрее всего?",
+      "en": "What small thing helps you relax the fastest?"
+    },
+    {
+      "id": "adult_088",
+      "category": "adult",
+      "ru": "Что ты считаешь самым важным в согласии?",
+      "en": "What do you think is most important in consent?"
+    },
+    {
+      "id": "adult_089",
+      "category": "adult",
+      "ru": "Как ты относишься к экспериментам: аккуратно или смело?",
+      "en": "How do you approach experiments: gently or boldly?"
+    },
+    {
+      "id": "adult_090",
+      "category": "adult",
+      "ru": "Какая атмосфера делает тебя более открытым(ой)?",
+      "en": "What atmosphere makes you more open?"
+    },
+    {
+      "id": "adult_091",
+      "category": "adult",
+      "ru": "Что для тебя значит «внимательность» партнёра?",
+      "en": "What does a partner's attentiveness mean to you?"
+    },
+    {
+      "id": "adult_092",
+      "category": "adult",
+      "ru": "Как ты любишь сочетание нежности и страсти?",
+      "en": "How do you like tenderness and passion to mix?"
+    },
+    {
+      "id": "adult_093",
+      "category": "adult",
+      "ru": "Какая форма доверия для тебя самая сильная?",
+      "en": "What form of trust feels strongest to you?"
+    },
+    {
+      "id": "adult_094",
+      "category": "adult",
+      "ru": "Что тебе важно проговорить заранее?",
+      "en": "What do you need to discuss beforehand?"
+    },
+    {
+      "id": "adult_095",
+      "category": "adult",
+      "ru": "Как ты предпочитаешь реагировать на «стоп»?",
+      "en": "How do you prefer to respond to a 'stop'?"
+    },
+    {
+      "id": "adult_096",
+      "category": "adult",
+      "ru": "Что помогает тебе не торопиться?",
+      "en": "What helps you not rush?"
+    },
+    {
+      "id": "adult_097",
+      "category": "adult",
+      "ru": "Какая просьба делает тебя спокойнее?",
+      "en": "What request makes you calmer?"
+    },
+    {
+      "id": "adult_098",
+      "category": "adult",
+      "ru": "Какой сигнал показывает тебе, что всё ок?",
+      "en": "What signal tells you everything is okay?"
+    },
+    {
+      "id": "adult_099",
+      "category": "adult",
+      "ru": "Что ты ценишь в тактильности больше всего?",
+      "en": "What do you value most in touch?"
+    },
+    {
+      "id": "adult_100",
+      "category": "adult",
+      "ru": "Какой маленький ритуал сделает вечер теплее?",
+      "en": "What small ritual would make the evening warmer?"
     }
   ]
 }
