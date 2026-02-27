@@ -188,6 +188,45 @@ def inject_css():
         }}
 
         /* Chips */
+
+        /* Radio pills (RU/EN) — add background for readability */
+        div[role="radiogroup"] {{
+            gap: .45rem;
+        }}
+        div[role="radiogroup"] label {{
+            background: {secondary_bg} !important;
+            border: 1px solid {secondary_border} !important;
+            border-radius: 999px !important;
+            padding: .35rem .7rem !important;
+            margin: 0 .25rem 0 0 !important;
+            color: {secondary_text} !important;
+            font-weight: 900 !important;
+        }}
+        /* Selected radio option */
+        div[role="radiogroup"] label:has(input:checked) {{
+            background: {primary} !important;
+            border-color: {primary} !important;
+            color: {primary_text} !important;
+        }}
+        div[role="radiogroup"] label:has(input:checked) * {{
+            color: {primary_text} !important;
+        }}
+
+        /* Toggle chip (Dark/Light) — background behind switch+text */
+        div[data-testid="stToggle"] > label {{
+            background: {secondary_bg} !important;
+            border: 1px solid {secondary_border} !important;
+            border-radius: 999px !important;
+            padding: .35rem .7rem !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: .6rem !important;
+        }}
+        div[data-testid="stToggle"] > label * {{
+            color: {secondary_text} !important;
+            font-weight: 900 !important;
+        }}
+
         div[data-baseweb="select"] > div {{ border-radius: 999px !important; }}
         div[data-baseweb="select"] * {{ font-weight: 900 !important; }}
         div[role="radiogroup"] label {{ border-radius: 999px !important; padding: .2rem .55rem !important; }}
