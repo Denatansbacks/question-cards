@@ -149,6 +149,8 @@ def inject_css():
         tab_text = "rgba(17,24,39,.92)"
         radio_bg = "rgba(17,24,39,.18)"
         toggle_bg = "rgba(17,24,39,.12)"
+        toggle_text_off = "rgba(17,24,39,.92)"
+        toggle_text_on = "rgba(255,255,255,.98)"
     else:
         bg1 = "#0B0F14"
         bg2 = "#1C1438"
@@ -166,6 +168,8 @@ def inject_css():
         tab_text = "rgba(255,255,255,.92)"
         radio_bg = "rgba(255,255,255,.10)"
         toggle_bg = "rgba(255,255,255,.10)"
+        toggle_text_off = "rgba(17,24,39,.92)"
+        toggle_text_on = "rgba(255,255,255,.98)"
 
     st.markdown(
         f"""
@@ -249,7 +253,7 @@ def inject_css():
             align-items: center !important;
             gap: .6rem !important;
         }}
-        div[data-testid="stToggle"] > label * {{
+        div[data-testid="stToggle"] label * {{
             color: {secondary_text} !important;
             font-weight: 900 !important;
         }}
@@ -330,9 +334,10 @@ def inject_css():
             padding: 1.35rem 1.25rem 1.55rem 1.25rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             gap: .6rem;
             animation: dealIn .22s ease-out;
+            overflow: hidden;
         }}
         /* Card aspect ratio changes with device aspect ratio */
         .card-front {{
@@ -353,6 +358,34 @@ def inject_css():
             border: 2px solid {inner};
             pointer-events: none;
         }}
+
+        /* Pinned top bar inside the card */
+        .card-topbar {{
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            z-index: 2;
+        }}
+        .card-count {{
+            font-size: .9rem;
+            font-weight: 900;
+            color: {sub};
+        }}
+        .card-center {{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: .6rem;
+            padding-top: 1.6rem; /* space for topbar */
+        }}
+
         .pill {{
             display: inline-flex;
             align-items: center;
@@ -459,9 +492,14 @@ with tabs[0]:
             <div class="deck-wrap">
               <div class="deck deck-main">
                 <div class="card-front">
-                  <div class="pill" style="justify-content:center;">🎉 {t("Набор закончился","Deck completed")}</div>
-                  <div class="qtext">{t("Вы вытащили все карты!","You drew every card!")}</div>
-                  <div class="meta">{t("Нажмите «Сбросить», чтобы перемешать и начать заново.","Press Reset to reshuffle and start again.")}</div>
+                  <div class="card-topbar">
+                    <div class="pill">{ui_label(cat_key)}</div>
+                    <div class="card-count">{t("готово","done")}</div>
+                  </div>
+                  <div class="card-center">
+                    <div class="qtext" style="font-size:1.35rem;">{t("Вы вытащили все карты!","You drew every card!")}</div>
+                    <div class="meta">{t("Нажмите «Сбросить», чтобы перемешать и начать заново.","Press Reset to reshuffle and start again.")}</div>
+                  </div>
                   <div class="symbol-badge">🃏</div>
                 </div>
               </div>
@@ -477,12 +515,8 @@ with tabs[0]:
         pos = int(st.session_state.deck_pos.get(cat_key, 0)) + 1
         total = len(st.session_state.decks[cat_key])
 
-        left_pills = []
-        if cat_key == "mix":
-            left_pills.append(f'<div class="pill">{ui_label("mix")}</div>')
-            left_pills.append(f'<div class="pill">{ui_label(actual_cat)}</div>')
-        else:
-            left_pills.append(f'<div class="pill">{ui_label(actual_cat)}</div>')
+        # Show only the actual category on the card (no 'mix' label inside)
+        left_label = ui_label(actual_cat)
 
         st.markdown(
             f"""
@@ -491,13 +525,13 @@ with tabs[0]:
                 <div class="card-back back2"></div>
                 <div class="card-back back1"></div>
                 <div class="card-front" data-deal="{st.session_state.deal_nonce}">
-                  <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                      {''.join(left_pills)}
-                    </div>
-                    <div class="pill">{t("карта","card")} {pos}/{total}</div>
+                  <div class="card-topbar">
+                    <div class="pill">{left_label}</div>
+                    <div class="card-count">{t("карта","card")} {pos}/{total}</div>
                   </div>
-                  <div class="qtext">{get_text(cur_qid)}</div>
+                  <div class="card-center">
+                    <div class="qtext" style="font-size:{q_font}rem;">{get_text(cur_qid)}</div>
+                  </div>
                   <div class="symbol-badge">{bottom_symbol_for_category(actual_cat)}</div>
                 </div>
               </div>
@@ -508,6 +542,10 @@ with tabs[0]:
 
         if st.button(t("Следующий вопрос", "Next question"), type="primary"):
             draw_next(cat_key)
+            st.rerun()
+
+        if st.button(t("Перемешать карточки", "Shuffle deck"), type="secondary"):
+            reset_deck(cat_key)
             st.rerun()
 
 
